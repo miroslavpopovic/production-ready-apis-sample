@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -21,8 +22,16 @@ namespace BoardGamesApi.Data
             return games;
         }
 
+        public Game GetById(string id)
+        {
+            var games = GetGames();
+
+            return games.FirstOrDefault(x => x.Id == id);
+        }
+
         public void Create(Game game)
         {
+            game.Id = GetNextId();
             GetGames().Add(game);
         }
 
@@ -59,6 +68,12 @@ namespace BoardGamesApi.Data
             }
 
             return _games;
+        }
+
+        private string GetNextId()
+        {
+            var maxId = GetGames().Select(x => int.Parse(x.Id.Split("-")[1])).Max();
+            return $"gam-{maxId + 1:D6}";
         }
     }
 }
