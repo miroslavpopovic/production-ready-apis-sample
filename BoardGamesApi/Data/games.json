@@ -1,0 +1,32 @@
+﻿{
+  "games": [
+    {
+      "id": "gam-000001",
+      "title": "7 Wonders",
+      "year": 2010,
+      "rating": 7.8,
+      "age": "10+",
+      "players": "2-7",
+      "playingTime": "30 min",
+      "designer": "Antoine Bauza",
+      "publisher": "Repos Production",
+      "url": "https://boardgamegeek.com/boardgame/68448/7-wonders",
+      "image": "https://boardgamegeek.com/image/860217/7-wonders",
+      "types": [ "family", "strategy" ]
+    },
+    {
+      "id": "gam-000002",
+      "title": "Carcassonne",
+      "year": 2000,
+      "rating": 7.4,
+      "age": "8+",
+      "players": "2-5",
+      "playingTime": "30-45 min",
+      "designer": "Klaus-Juergen Wrede",
+      "publisher": "Z-Man",
+      "url": "https://boardgamegeek.com/boardgame/822/carcassonne",
+      "image": "https://boardgamegeek.com/image/2337577/carcassonne",
+      "types": [ "family" ]
+    }
+  ]
+}
