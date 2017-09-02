@@ -1,6 +1,7 @@
 ﻿using BoardGamesApi.Data;
 using BoardGamesApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BoardGamesApi.Controllers
 {
@@ -8,15 +9,19 @@ namespace BoardGamesApi.Controllers
     public class GamesController : Controller
     {
         private readonly IGamesRepository _gamesRepository;
+        private readonly ILogger<GamesController> _logger;
 
-        public GamesController(IGamesRepository gamesRepository)
+        public GamesController(IGamesRepository gamesRepository, ILogger<GamesController> logger)
         {
             _gamesRepository = gamesRepository;
+            _logger = logger;
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
+            _logger.LogDebug($"Deleting game with id {id}");
+
             if (string.IsNullOrWhiteSpace(id))
                 return NotFound();
 
@@ -32,6 +37,8 @@ namespace BoardGamesApi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
+            _logger.LogDebug("Getting all games");
+
             var games = _gamesRepository.GetAll();
 
             return Ok(games.WrapData());
@@ -40,6 +47,8 @@ namespace BoardGamesApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {
+            _logger.LogDebug($"Getting a game with id {id}");
+
             if (string.IsNullOrWhiteSpace(id))
                 return NotFound();
 
@@ -54,6 +63,8 @@ namespace BoardGamesApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] GameInput model)
         {
+            _logger.LogDebug($"Creating a new game with title \"{model.Title}\"");
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -70,6 +81,8 @@ namespace BoardGamesApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] GameInput model)
         {
+            _logger.LogDebug($"Updating a game with id {id}");
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
