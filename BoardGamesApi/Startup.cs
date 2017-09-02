@@ -31,6 +31,8 @@ namespace BoardGamesApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMiddleware<ErrorHandlingMiddleware>();
+
             app.UseMvc();
         }
     }
