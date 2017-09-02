@@ -34,7 +34,7 @@ namespace BoardGamesApi.Controllers
         {
             var games = _gamesRepository.GetAll();
 
-            return Ok(games);
+            return Ok(games.WrapData());
         }
 
         [HttpGet("{id}")]
@@ -48,7 +48,7 @@ namespace BoardGamesApi.Controllers
             if (game == null)
                 return NotFound();
 
-            return Ok(game);
+            return Ok(game.WrapData());
         }
 
         [HttpPost]
@@ -64,7 +64,7 @@ namespace BoardGamesApi.Controllers
 
             var url = $"{Request.Scheme}://{Request.Host}/api/games/{game.Id}";
 
-            return Created(url, game);
+            return Created(url, game.WrapData());
         }
 
         [HttpPut("{id}")]
@@ -82,7 +82,7 @@ namespace BoardGamesApi.Controllers
 
             _gamesRepository.Update(game);
 
-            return Ok(game);
+            return Ok(game.WrapData());
         }
     }
 }

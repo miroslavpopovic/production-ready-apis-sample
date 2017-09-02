@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using BoardGamesApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace BoardGamesApi
 {
@@ -40,7 +42,10 @@ namespace BoardGamesApi
             //else if (exception is UnauthorizedException) code = HttpStatusCode.Unauthorized;
             //else if (exception is CustomException) code = HttpStatusCode.BadRequest;
 
-            var result = JsonConvert.SerializeObject(new { error = exception.Message, isSuccess = false });
+            var result = JsonConvert.SerializeObject(
+                exception.WrapException(),
+                new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()});
+
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
 
