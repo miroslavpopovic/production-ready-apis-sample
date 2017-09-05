@@ -27,5 +27,16 @@ namespace BoardGamesApi.Models
 
             return result;
         }
+
+        public static ApiResult WrapPagedList<T>(this PagedList<T> pagedList)
+        {
+            return new PagedApiResult
+            {
+                Data = pagedList.Items,
+                Page = pagedList.Page,
+                PageSize = pagedList.PageSize,
+                TotalCount = pagedList.TotalCount
+            };
+        }
     }
 }

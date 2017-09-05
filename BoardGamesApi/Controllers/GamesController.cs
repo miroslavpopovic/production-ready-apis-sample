@@ -35,13 +35,13 @@ namespace BoardGamesApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(int page = 1, int size = 10)
         {
-            _logger.LogDebug("Getting all games");
+            _logger.LogDebug("Getting one page of games");
 
-            var games = _gamesRepository.GetAll();
+            var games = _gamesRepository.GetPage(page, size);
 
-            return Ok(games.WrapData());
+            return Ok(games.WrapPagedList());
         }
 
         [HttpGet("{id}")]
