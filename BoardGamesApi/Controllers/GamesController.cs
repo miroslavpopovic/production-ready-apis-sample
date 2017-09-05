@@ -1,10 +1,12 @@
 ﻿using BoardGamesApi.Data;
 using BoardGamesApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace BoardGamesApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class GamesController : Controller
     {

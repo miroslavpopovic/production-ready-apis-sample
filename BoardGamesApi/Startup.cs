@@ -1,8 +1,11 @@
-﻿using BoardGamesApi.Data;
+﻿using System.Text;
+using BoardGamesApi.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BoardGamesApi
 {
@@ -20,6 +23,22 @@ namespace BoardGamesApi
         {
             services.AddSingleton<IGamesRepository, GamesRepository>();
 
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(
+                    options =>
+                    {
+                        var tokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidIssuer = Configuration["Tokens:Issuer"],
+                            ValidAudience = Configuration["Tokens:Issuer"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+                        };
+
+                        options.RequireHttpsMetadata = false; // Just for testing
+                        options.TokenValidationParameters = tokenValidationParameters;
+                    });
+
             services.AddMvc();
         }
 
@@ -32,6 +51,8 @@ namespace BoardGamesApi
             }
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }
