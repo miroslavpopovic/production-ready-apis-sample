@@ -6,6 +6,10 @@ using Microsoft.Extensions.Logging;
 
 namespace BoardGamesApi.Controllers
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Games endpoint of Board Games API.
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     public class GamesController : Controller
@@ -19,8 +23,16 @@ namespace BoardGamesApi.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Delete the game with the given id.
+        /// </summary>
+        /// <param name="id">Id of the game to delete.</param>
+        /// <response code="200">Game successfully deleted</response>
+        /// <response code="404">Game with the given ID not found.</response>
         [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(void), 200)]
+        [ProducesResponseType(typeof(void), 404)]
         public IActionResult Delete(string id)
         {
             _logger.LogDebug($"Deleting game with id {id}");
@@ -37,6 +49,7 @@ namespace BoardGamesApi.Controllers
             return Ok();
         }
 
+        /// <remarks>If you omit <c>page</c> and <c>size</c> query parameters, you'll get the first page with 10 games.</remarks>
         [HttpGet]
         public IActionResult GetAll(int page = 1, int size = 10)
         {

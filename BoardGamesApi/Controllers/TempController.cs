@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BoardGamesApi.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class TempController : Controller
     {
         private readonly IConfiguration _configuration;
