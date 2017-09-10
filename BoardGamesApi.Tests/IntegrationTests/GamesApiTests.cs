@@ -9,7 +9,6 @@ namespace BoardGamesApi.Tests.IntegrationTests
 {
     public class GamesApiTests
     {
-        private readonly TestServer _server;
         private readonly HttpClient _client;
         private readonly string _nonAdminToken;
         private readonly string _adminToken;
@@ -19,11 +18,11 @@ namespace BoardGamesApi.Tests.IntegrationTests
             const string issuer = "http://localhost:49194";
             const string key = "some-long-secret-key";
 
-            _server = new TestServer(new WebHostBuilder()
+            var server = new TestServer(new WebHostBuilder()
                 .UseStartup<Startup>()
                 .UseSetting("Tokens:Issuer", issuer)
                 .UseSetting("Tokens:Key", key));
-            _client = _server.CreateClient();
+            _client = server.CreateClient();
 
             _nonAdminToken = JwtTokenGenerator.Generate("mscommunity", false, issuer, key);
             _adminToken = JwtTokenGenerator.Generate("mscommunity", true, issuer, key);
