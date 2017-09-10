@@ -1,11 +1,6 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
 namespace BoardGamesApi.Controllers
 {
@@ -22,22 +17,8 @@ namespace BoardGamesApi.Controllers
         [Route("/get-token")]
         public IActionResult GenerateToken(string name = "mscommunity")
         {
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, name),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role, "admin")
-            };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(_configuration["Tokens:Issuer"],
-                _configuration["Tokens:Issuer"],
-                claims,
-                expires: DateTime.Now.AddDays(30),
-                signingCredentials: creds);
-
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            var jwt = JwtTokenGenerator
+                .Generate(name, true, _configuration["Token:Issuer"], _configuration["Token:Key"]);
 
             return Ok(jwt);
         }
