@@ -58,7 +58,7 @@ namespace BoardGamesApi.Controllers
         /// <response code="200">Returns a page of games.</response>
         /// <response code="404">Game with the given id not found.</response>
         [HttpGet]
-        [ProducesResponseType(typeof(PagedApiResult), 200)]
+        [ProducesResponseType(typeof(PagedApiResult<Game>), 200)]
         [ProducesResponseType(typeof(void), 404)]
         public IActionResult GetAll(int page = 1, int size = 10)
         {
@@ -76,7 +76,7 @@ namespace BoardGamesApi.Controllers
         /// <response code="200">Returns the game with the given id.</response>
         /// <response code="404">Game with the given id not found.</response>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(ApiResult), 200)]
+        [ProducesResponseType(typeof(ApiResult<Game>), 200)]
         [ProducesResponseType(typeof(void), 404)]
         public IActionResult GetById(string id)
         {
@@ -101,7 +101,7 @@ namespace BoardGamesApi.Controllers
         /// <response code="400">Supplied data is not valid.</response>
         [Authorize(Roles = "admin")]
         [HttpPost]
-        [ProducesResponseType(typeof(ApiResult), 200)]
+        [ProducesResponseType(typeof(ApiResult<Game>), 200)]
         [ProducesResponseType(typeof(void), 400)]
         public IActionResult Post([FromBody] GameInput model)
         {
@@ -130,7 +130,7 @@ namespace BoardGamesApi.Controllers
         /// <response code="404">Game with the given id not found.</response>
         [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(ApiResult), 200)]
+        [ProducesResponseType(typeof(ApiResult<Game>), 200)]
         [ProducesResponseType(typeof(void), 400)]
         [ProducesResponseType(typeof(void), 404)]
         public IActionResult Put(string id, [FromBody] GameInput model)

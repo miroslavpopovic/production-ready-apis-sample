@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BoardGamesApi.Models
 {
-    public class PagedApiResult : ApiResult
+    public class PagedApiResult<T> : ApiResult<IEnumerable<T>>
     {
         public int Page { get; set; }
         public int PageSize { get; set; }

@@ -87,12 +87,9 @@ namespace BoardGamesApi.Tests.UnitTests
             Assert.IsType<OkObjectResult>(result);
 
             var resultValue = ((OkObjectResult) result).Value;
-            Assert.IsType<ApiResult>(resultValue);
+            Assert.IsType<ApiResult<Game>>(resultValue);
 
-            var resultGame = ((ApiResult)resultValue).Data;
-            Assert.IsType<Game>(resultGame);
-
-            Assert.Equal("existing", ((Game) resultGame).Id);
+            Assert.Equal("existing", ((ApiResult<Game>)resultValue).Data.Id);
         }
     }
 }
