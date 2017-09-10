@@ -19,6 +19,7 @@ namespace BoardGamesApi.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
@@ -62,6 +63,7 @@ namespace BoardGamesApi.Controllers
             return Ok(game.WrapData());
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Post([FromBody] GameInput model)
         {
@@ -80,6 +82,7 @@ namespace BoardGamesApi.Controllers
             return Created(url, game.WrapData());
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody] GameInput model)
         {
