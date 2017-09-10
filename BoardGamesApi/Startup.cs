@@ -89,6 +89,8 @@ namespace BoardGamesApi
 
             app.UseAuthentication();
 
+            app.UseMiddleware<LimitingMiddleware>();
+
             app.UseMvc();
 
             app.UseSwagger(); // http://localhost:49194/swagger/v1/swagger.json
