@@ -1,0 +1,356 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BoardGamesApi",
+		"_postman_id": "8602eb2e-ca5a-27e1-5326-0a5d455b1f16",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "No Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all games",
+					"request": {
+						"url": {
+							"raw": "http://localhost:49194/api/games?size=5&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49194",
+							"path": [
+								"api",
+								"games"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "5",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get game by id",
+					"request": {
+						"url": "http://localhost:49194/api/games/gam-000002",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create game",
+					"request": {
+						"url": "http://localhost:49194/api/games",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Charterstone\",\n  \"year\": 2017,\n  \"rating\": 7.7,\n  \"age\": \"10+\",\n  \"players\": \"1-6\",\n  \"playingTime\": \"45-75 min\",\n  \"designer\": \"Jamey Stegmaier\",\n  \"publisher\": \"Stonemaier Games\",\n  \"url\": \"https://boardgamegeek.com/boardgame/197376/charterstone\",\n  \"image\": \"https://boardgamegeek.com/image/3322613/charterstone\",\n  \"types\": [ \"legacy\", \"campaign\" ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update game",
+					"request": {
+						"url": "http://localhost:49194/api/games/gam-000002",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"7 Wonders 2\",\n  \"year\": 2010,\n  \"rating\": 7.8,\n  \"age\": \"10+\",\n  \"players\": \"2-7\",\n  \"playingTime\": \"30 min\",\n  \"designer\": \"Antoine Bauza\",\n  \"publisher\": \"Repos Production\",\n  \"url\": \"https://boardgamegeek.com/boardgame/68448/7-wonders\",\n  \"image\": \"https://boardgamegeek.com/image/860217/7-wonders\",\n  \"types\": [ \"family\", \"strategy\" ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete game",
+					"request": {
+						"url": "http://localhost:49194/api/games/gam-000002",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all games",
+					"request": {
+						"url": {
+							"raw": "http://localhost:49194/api/games?size=5&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49194",
+							"path": [
+								"api",
+								"games"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "5",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6ImEyYWI1ZjJjLTQ1MmItNGQ3Zi1hMzRhLTI3ZDFmOWRmNmU3NCIsImV4cCI6MTUwNzY0OTIwOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDkxOTQifQ.pso_GSdXVcR8475x9qFuK7sRr9-q-srDBIkwk-G4UO4",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get game by id",
+					"request": {
+						"url": "http://localhost:49194/api/games/gam-000002",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6ImEyYWI1ZjJjLTQ1MmItNGQ3Zi1hMzRhLTI3ZDFmOWRmNmU3NCIsImV4cCI6MTUwNzY0OTIwOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDkxOTQifQ.pso_GSdXVcR8475x9qFuK7sRr9-q-srDBIkwk-G4UO4",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create game",
+					"request": {
+						"url": "http://localhost:49194/api/games",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6IjJjZTZhMzhlLWVmMGEtNDM2My1hYzRhLWI5Mjk5NmM1ZGZkNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTA3NjQ5MzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MTk0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCJ9._lHJJcJcjPvPUnBYqpwu3cc0t_meGi1Ziqlts1Zc1fs",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Charterstone\",\n  \"year\": 2017,\n  \"rating\": 7.7,\n  \"age\": \"10+\",\n  \"players\": \"1-6\",\n  \"playingTime\": \"45-75 min\",\n  \"designer\": \"Jamey Stegmaier\",\n  \"publisher\": \"Stonemaier Games\",\n  \"url\": \"https://boardgamegeek.com/boardgame/197376/charterstone\",\n  \"image\": \"https://boardgamegeek.com/image/3322613/charterstone\",\n  \"types\": [ \"legacy\", \"campaign\" ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update game",
+					"request": {
+						"url": "http://localhost:49194/api/games/gam-000002",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6IjJjZTZhMzhlLWVmMGEtNDM2My1hYzRhLWI5Mjk5NmM1ZGZkNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTA3NjQ5MzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MTk0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCJ9._lHJJcJcjPvPUnBYqpwu3cc0t_meGi1Ziqlts1Zc1fs",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"7 Wonders 2\",\n  \"year\": 2010,\n  \"rating\": 7.8,\n  \"age\": \"10+\",\n  \"players\": \"2-7\",\n  \"playingTime\": \"30 min\",\n  \"designer\": \"Antoine Bauza\",\n  \"publisher\": \"Repos Production\",\n  \"url\": \"https://boardgamegeek.com/boardgame/68448/7-wonders\",\n  \"image\": \"https://boardgamegeek.com/image/860217/7-wonders\",\n  \"types\": [ \"family\", \"strategy\" ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete game",
+					"request": {
+						"url": "http://localhost:49194/api/games/gam-000002",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6IjJjZTZhMzhlLWVmMGEtNDM2My1hYzRhLWI5Mjk5NmM1ZGZkNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTA3NjQ5MzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MTk0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCJ9._lHJJcJcjPvPUnBYqpwu3cc0t_meGi1Ziqlts1Zc1fs",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Versioned",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all games",
+					"request": {
+						"url": "http://localhost:49194/api/v2/games",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6ImEyYWI1ZjJjLTQ1MmItNGQ3Zi1hMzRhLTI3ZDFmOWRmNmU3NCIsImV4cCI6MTUwNzY0OTIwOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDkxOTQifQ.pso_GSdXVcR8475x9qFuK7sRr9-q-srDBIkwk-G4UO4",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get game by id",
+					"request": {
+						"url": "http://localhost:49194/api/v2/games/gam-000002",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6ImEyYWI1ZjJjLTQ1MmItNGQ3Zi1hMzRhLTI3ZDFmOWRmNmU3NCIsImV4cCI6MTUwNzY0OTIwOCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDkxOTQifQ.pso_GSdXVcR8475x9qFuK7sRr9-q-srDBIkwk-G4UO4",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create game",
+					"request": {
+						"url": "http://localhost:49194/api/v2/games",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6IjJjZTZhMzhlLWVmMGEtNDM2My1hYzRhLWI5Mjk5NmM1ZGZkNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTA3NjQ5MzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MTk0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCJ9._lHJJcJcjPvPUnBYqpwu3cc0t_meGi1Ziqlts1Zc1fs",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Charterstone\",\n  \"year\": 2017,\n  \"rating\": 7.7,\n  \"age\": \"10+\",\n  \"players\": \"1-6\",\n  \"playingTime\": \"45-75 min\",\n  \"designer\": \"Jamey Stegmaier\",\n  \"publisher\": \"Stonemaier Games\",\n  \"url\": \"https://boardgamegeek.com/boardgame/197376/charterstone\",\n  \"image\": \"https://boardgamegeek.com/image/3322613/charterstone\",\n  \"types\": [ \"legacy\", \"campaign\" ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update game",
+					"request": {
+						"url": "http://localhost:49194/api/v2/games/gam-000002",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6IjJjZTZhMzhlLWVmMGEtNDM2My1hYzRhLWI5Mjk5NmM1ZGZkNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTA3NjQ5MzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MTk0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCJ9._lHJJcJcjPvPUnBYqpwu3cc0t_meGi1Ziqlts1Zc1fs",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"7 Wonders 2\",\n  \"year\": 2010,\n  \"rating\": 7.8,\n  \"age\": \"10+\",\n  \"players\": \"2-7\",\n  \"playingTime\": \"30 min\",\n  \"designer\": \"Antoine Bauza\",\n  \"publisher\": \"Repos Production\",\n  \"url\": \"https://boardgamegeek.com/boardgame/68448/7-wonders\",\n  \"image\": \"https://boardgamegeek.com/image/860217/7-wonders\",\n  \"types\": [ \"family\", \"strategy\" ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete game",
+					"request": {
+						"url": "http://localhost:49194/api/v2/games/gam-000002",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtc2NvbW11bml0eSIsImp0aSI6IjJjZTZhMzhlLWVmMGEtNDM2My1hYzRhLWI5Mjk5NmM1ZGZkNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTA3NjQ5MzgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQ5MTk0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0OTE5NCJ9._lHJJcJcjPvPUnBYqpwu3cc0t_meGi1Ziqlts1Zc1fs",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
