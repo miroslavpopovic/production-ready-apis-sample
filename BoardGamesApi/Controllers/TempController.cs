@@ -19,7 +19,7 @@ namespace BoardGamesApi.Controllers
         public IActionResult GenerateToken(string name = "mscommunity")
         {
             var jwt = JwtTokenGenerator
-                .Generate(name, true, _configuration["Token:Issuer"], _configuration["Token:Key"]);
+                .Generate(name, true, _configuration["Tokens:Issuer"], _configuration["Tokens:Key"]);
 
             return Ok(jwt);
         }
