@@ -49,14 +49,14 @@ namespace BoardGamesApi.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task Delete_NoId_ReturnsNotFound()
+        public async Task Delete_NoId_ReturnsMethodNotAllowed()
         {
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Add("Authorization", new[] {$"Bearer {_adminToken}"});
 
             var result = await _client.DeleteAsync("/api/games");
 
-            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+            Assert.Equal(HttpStatusCode.MethodNotAllowed, result.StatusCode);
         }
 
         [Fact]
