@@ -1,5 +1,5 @@
 # Production Ready APIs sample
-A sample code for a presentation "Building production ready APIs with ASP.NET 2.0".
+A sample code for a presentation "Building production ready APIs with ASP.NET Core 2.0".
 
 To follow up the presentation, switch through the various numbered git branches.
 
